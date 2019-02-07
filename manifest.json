@@ -1,0 +1,26 @@
+{
+  "name": "Jira Board Total Points",
+  "version": "1.0",
+  "description": "Show total points for every column in a Jira board",
+  "manifest_version": 2,
+  "icons": {
+    "128": "icon128.png",
+    "48": "icon48.png",
+    "16": "icon16.png"
+  },
+    "page_action": {
+    "default_icon": "icon16.png",
+    "default_popup": "popup.html",
+    "default_title": "Jira Board Total Points"
+  },
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "matches": ["https://*.jboss.org/*"],
+    "js": ["contentScript.js"],
+    "css": ["styles.css"]
+  }],
+  "permissions": ["tabs", "https://*.jboss.org/*"]
+}
