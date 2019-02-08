@@ -10,12 +10,7 @@
   },
     "page_action": {
     "default_icon": "icon16.png",
-    "default_popup": "popup.html",
     "default_title": "Jira Board Total Points"
-  },
-  "background": {
-    "scripts": ["eventPage.js"],
-    "persistent": false
   },
   "content_scripts": [{
     "matches": ["https://*.jboss.org/*"],
