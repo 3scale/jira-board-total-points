@@ -1,6 +1,6 @@
 document.onreadystatechange = function() {
 
-  const getTotalPointsForColumn = column => Array.from(column.querySelectorAll('aui-badge')).reduce((init, current) => init + parseFloat(current.textContent), 0)
+  const getTotalPointsForColumn = column => Array.from(column.querySelectorAll('aui-badge')).reduce((init, current) => init + Number(current.textContent), 0)
 
   const displayTotalPoints = () => {
     const columns = document.querySelectorAll('.ghx-columns .ghx-column')
