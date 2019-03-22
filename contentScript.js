@@ -2,7 +2,7 @@ document.onreadystatechange = function() {
 
   const getTotalPointsForColumn = column => Array.from(column.querySelectorAll('aui-badge')).reduce((init, current) => init + Number(current.textContent), 0)
 
-  const updateColumns = (column, columnPoints) => {
+  const updateColumn = (column, columnPoints) => {
     const div = document.createElement("div")
     const text = document.createTextNode("Total points: ")
     const span = document.createElement("span")
@@ -33,7 +33,7 @@ document.onreadystatechange = function() {
         return
       }
       const columnPoints = getTotalPointsForColumn(column)
-      updateColumns(column, columnPoints)
+      updateColumn(column, columnPoints)
       totalPoints += columnPoints;
     })
 
