@@ -2,27 +2,42 @@ document.onreadystatechange = function() {
 
   const getTotalPointsForColumn = column => Array.from(column.querySelectorAll('aui-badge')).reduce((init, current) => init + Number(current.textContent), 0)
 
+  const updateColumns = (column, columnPoints) => {
+    const div = document.createElement("div")
+    const text = document.createTextNode("Total points: ")
+    const span = document.createElement("span")
+    const textSpan = document.createTextNode(columnPoints)
+    div.classList.add('TotalPoints--column-text')
+    span.classList.add('TotalPoints--column-number')
+    span.appendChild(textSpan)
+    div.appendChild(text)
+    div.appendChild(span)
+    column.prepend(div)
+  }
+
+  const updateTitle = totalPoints => {
+    const titleElem = document.querySelector('#ghx-header .subnav-container')
+    const spanTotal = document.createElement("span")
+    spanTotal.classList.add('TotalPoints--title')
+    const textTotal = document.createTextNode(totalPoints)
+    spanTotal.appendChild(textTotal)
+    titleElem.appendChild(spanTotal)
+  }
+
   const displayTotalPoints = () => {
     const columns = document.querySelectorAll('.ghx-columns .ghx-column')
+    let totalPoints = 0
 
     columns.forEach((column) => {
-
       if (column.childNodes.length < 1) {
         return
       }
-
       const columnPoints = getTotalPointsForColumn(column)
-      const div = document.createElement("div")
-      const text = document.createTextNode("Total points: ")
-      const span = document.createElement("span")
-      const textSpan = document.createTextNode(columnPoints)
-      span.appendChild(textSpan)
-      div.setAttribute("style", "background-color:white; color: #172b4d; border: 1px solid #c1c7d0; padding: 3px")
-      span.setAttribute("style", "float:right; background: rgba(9,30,66,0.13); font-weight: 600; border-radius: 2em; font-size: 12px; padding:2px 4px;")
-      div.appendChild(text)
-      div.appendChild(span)
-      column.prepend(div)
+      updateColumns(column, columnPoints)
+      totalPoints += columnPoints;
     })
+
+    updateTitle(totalPoints)
   }
 
   if (document.readyState === 'complete') {
