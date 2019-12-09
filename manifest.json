@@ -13,9 +13,9 @@
     "default_title": "Jira Board Total Points"
   },
   "content_scripts": [{
-    "matches": ["https://*.jboss.org/*"],
+    "matches": ["https://issues.redhat.com/*"],
     "js": ["contentScript.js"],
     "css": ["styles.css"]
   }],
-  "permissions": ["tabs", "https://*.jboss.org/*"]
+  "permissions": ["tabs", "https://issues.redhat.com/*"]
 }
